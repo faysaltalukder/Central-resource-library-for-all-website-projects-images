@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="560" viewBox="0 0 720 560" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="112" y1="36" x2="604" y2="518" gradientUnits="userSpaceOnUse"><stop stop-color="#F5EBDD"/><stop offset="1" stop-color="#E9E7DD"/></linearGradient>
+    <linearGradient id="card" x1="210" y1="116" x2="500" y2="440" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFDF7"/><stop offset="1" stop-color="#F7F1E7"/></linearGradient>
+    <linearGradient id="gold" x1="252" y1="164" x2="489" y2="421" gradientUnits="userSpaceOnUse"><stop stop-color="#D5B17F"/><stop offset="1" stop-color="#9E7447"/></linearGradient>
+  </defs>
+  <circle cx="362" cy="278" r="224" fill="url(#bg)"/>
+  <circle cx="362" cy="278" r="194" stroke="#C9B18F" stroke-opacity=".48" stroke-width="2" stroke-dasharray="5 12"/>
+  <path d="M121 274c91-109 387-137 489 0" stroke="#B58C5B" stroke-opacity=".35" stroke-width="2"/>
+  <path d="M160 378c94 86 306 111 420 0" stroke="#899486" stroke-opacity=".35" stroke-width="2"/>
+  <rect x="212" y="118" width="300" height="324" rx="28" fill="url(#card)" stroke="#DDD2C1" stroke-width="2"/>
+  <rect x="240" y="147" width="244" height="207" rx="17" fill="#E8E5D9"/>
+  <path d="M240 310 314 229l54 56 45-48 71 77v40H240v-44Z" fill="#A6B09D"/>
+  <circle cx="420" cy="200" r="20" fill="#D1A873"/>
+  <rect x="240" y="371" width="142" height="12" rx="6" fill="#B7A58B"/>
+  <rect x="240" y="394" width="202" height="8" rx="4" fill="#DDD4C6"/>
+  <circle cx="513" cy="143" r="47" fill="#344247"/>
+  <path d="M513 117v52M487 143h52" stroke="#EBD1A8" stroke-width="5" stroke-linecap="round"/>
+  <rect x="128" y="363" width="92" height="92" rx="22" fill="#82917F"/>
+  <path d="M157 410v-18c0-7 6-13 13-13s13 6 13 13v18m-32 0h39" stroke="#F8F4EA" stroke-width="5" stroke-linecap="round"/>
+  <rect x="479" y="350" width="104" height="104" rx="24" fill="#D7B98F"/>
+  <path d="M508 384h47v37h-47z" stroke="#765B3D" stroke-width="4" stroke-linejoin="round"/><path d="m508 395 23 17 24-17" stroke="#765B3D" stroke-width="4" stroke-linejoin="round"/>
+  <path d="m176 157 8 17 18 2-14 12 4 18-16-9-16 9 4-18-14-12 18-2 8-17Z" fill="#B58C5B" opacity=".8"/>
+</svg>
