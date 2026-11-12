@@ -7,7 +7,7 @@ A lightweight static website for organising and uploading reusable assets to thi
 - Provides a responsive upload page with drag-and-drop and multi-file selection.
 - Previews selected images and shows a queue before upload.
 - Uploads the **actual original file bytes** to this repository using the GitHub Contents API (Base64 is only the API transport encoding).
-- Organises files under `assets/<category>/<optional-folder>/`.
+- Organises files under `pictures/<category>/<optional-folder>/`.
 - Avoids overwriting an existing file: duplicate names get a numeric suffix.
 - Shows the image/video asset collection from the repository.
 - Keeps the fine-grained GitHub token in page memory only; it is not written to localStorage, sessionStorage, cookies, or repository files.
@@ -56,6 +56,11 @@ The page verifies the account and repository. The first upload confirms whether 
 ├── index.html
 ├── styles.css
 ├── app.js
+├── pictures/
+│   ├── general/
+│   ├── fashion/
+│   ├── products/
+│   └── website/
 ├── assets/
 │   └── images/
 │       └── library-mark.svg
@@ -66,7 +71,7 @@ The page verifies the account and repository. The first upload confirms whether 
 
 ## Moving an asset to another website repository
 
-The uploader stores the source file itself in this repository. To move an asset to another GitHub-hosted website, the transfer workflow must read the source file bytes and create the destination file with those bytes (not merely copy its URL). The destination repository also needs write access for the connected GitHub account/token. For external hosting providers, a separate destination credential or upload API is required.
+Picture uploads are stored in the root-level `pictures/` folder by category (for example `pictures/fashion/` or `pictures/products/`). Other resource types such as logos, videos, UI components and documents are stored under `assets/<category>/`. The uploader stores the source file itself in this repository. To move an asset to another GitHub-hosted website, the transfer workflow must read the source file bytes and create the destination file with those bytes (not merely copy its URL). The destination repository also needs write access for the connected GitHub account/token. For external hosting providers, a separate destination credential or upload API is required.
 
 ## Supported formats
 
