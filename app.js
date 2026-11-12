@@ -202,6 +202,7 @@
     } catch (error) {
       connected = false;
       githubToken = "";
+      tokenInput.value = "";
       setConnection(error.message || "Could not verify token.", "error");
       toast("Connection failed: " + error.message, true);
     } finally {
@@ -320,6 +321,7 @@
       setConnection("Upload completed · " + success.length + " file(s) added to the Library.", "ok");
       await loadLibrary();
     } catch (error) {
+      renderUploaded(uploadedThisSession);
       setConnection("Upload stopped: " + error.message, "error");
       toast("Upload stopped: " + error.message, true);
       if (success.length) {
@@ -373,7 +375,7 @@
   async function loadLibrary() {
     try {
       const tree = await apiRequest(API + "/repos/" + OWNER + "/" + REPO + "/git/trees/" + BRANCH + "?recursive=1", {}, githubToken || undefined);
-      const rows = (tree.tree || []).filter((entry) => entry.type === "blob" && entry.path.startsWith("assets/"));
+      const rows = (tree.tree || []).filter((entry) => entry.type === "blob" && entry.path.startsWith("assets/") && !entry.path.endsWith("/.gitkeep"));
       const items = rows.slice(-60).reverse().map((entry) => {
         const name = entry.path.split("/").pop();
         const ext = name.split(".").pop().toLowerCase();
