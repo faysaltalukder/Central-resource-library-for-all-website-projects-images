@@ -158,7 +158,7 @@
   async function apiRequest(url, options = {}, token = githubToken) {
     const response = await fetch(url, {
       ...options,
-      headers: { ...headers(token), ...(options.headers || {}) }
+      headers: { "Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28", ...(token ? { "Authorization": "Bearer " + token } : {}), ...(options.headers || {}) }
     });
     let data = null;
     const raw = await response.text();
