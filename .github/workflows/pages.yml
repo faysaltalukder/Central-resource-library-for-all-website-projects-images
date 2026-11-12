@@ -25,6 +25,16 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v6
 
+      - name: Validate required frontend files
+        run: |
+          test -s index.html
+          test -s styles.css
+          test -s app.js
+          test -s assets/images/library-mark.svg
+
+      - name: Validate uploader JavaScript syntax
+        run: node --check app.js
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
