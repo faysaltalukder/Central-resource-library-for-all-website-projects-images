@@ -270,7 +270,7 @@
     const category = $("category").value;
     const folder = safeSegment($("subfolder").value);
     const originalName = safeSegment(file.name.replace(/\s+/g, "-")) || ("asset-" + Date.now());
-    const folderPath = ["assets", category, folder].filter(Boolean).join("/");
+    const folderPath = (category.startsWith("pictures/") ? [category, folder] : ["assets", category, folder]).filter(Boolean).join("/");
     const requestedPath = folderPath + "/" + originalName;
     const path = await uniquePath(requestedPath);
     setProgress(index, total, "Encoding " + file.name + "…");
@@ -375,7 +375,7 @@
   async function loadLibrary() {
     try {
       const tree = await apiRequest(API + "/repos/" + OWNER + "/" + REPO + "/git/trees/" + BRANCH + "?recursive=1", {}, githubToken || undefined);
-      const rows = (tree.tree || []).filter((entry) => entry.type === "blob" && entry.path.startsWith("assets/") && !entry.path.endsWith("/.gitkeep"));
+      const rows = (tree.tree || []).filter((entry) => entry.type === "blob" && (entry.path.startsWith("assets/") || entry.path.startsWith("pictures/")) && !entry.path.endsWith("/.gitkeep"));
       const items = rows.slice(-60).reverse().map((entry) => {
         const name = entry.path.split("/").pop();
         const ext = name.split(".").pop().toLowerCase();
