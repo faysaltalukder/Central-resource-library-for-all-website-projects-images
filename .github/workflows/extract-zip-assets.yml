@@ -1,0 +1,112 @@
+
+name: Extract Image ZIP
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "Lifestyle Trends and Online Shopping in BD.zip"
+
+permissions:
+  contents: write
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Extract ZIP and Build Image Index
+        run: |
+          python - <<'PY'
+          import zipfile
+          import shutil
+          import hashlib
+          import json
+          import os
+          from pathlib import Path, PurePosixPath
+          from urllib.parse import quote
+
+          archive = Path("Lifestyle Trends and Online Shopping in BD.zip")
+          output = Path("assets/lifestyle-trends")
+          index = Path("indexes/lifestyle-trends.json")
+
+          if not archive.is_file():
+              raise FileNotFoundError("ZIP file not found")
+
+          if output.exists():
+              shutil.rmtree(output)
+
+          output.mkdir(parents=True, exist_ok=True)
+
+          files = []
+
+          with zipfile.ZipFile(archive) as z:
+              for item in z.infolist():
+                  if item.is_dir():
+                      continue
+
+                  name = item.filename.replace("\\", "/")
+                  relative = PurePosixPath(name)
+
+                  if relative.is_absolute() or ".." in relative.parts:
+                      raise ValueError(f"Unsafe ZIP path: {name}")
+
+                  if "__MACOSX" in relative.parts or relative.name == ".DS_Store":
+                      continue
+
+                  target = output.joinpath(*relative.parts)
+                  if not target.resolve().is_relative_to(output.resolve()):
+                      raise ValueError(f"Unsafe path: {name}")
+
+                  target.parent.mkdir(parents=True, exist_ok=True)
+
+                  with z.open(item) as src, target.open("wb") as dst:
+                      shutil.copyfileobj(src, dst)
+
+                  digest = hashlib.sha256(target.read_bytes()).hexdigest()
+                  relative_path = target.as_posix()
+
+                  files.append({
+                      "path": relative_path,
+                      "filename": target.name,
+                      "size": target.stat().st_size,
+                      "sha256": digest,
+                      "url": (
+                          "https://raw.githubusercontent.com/"
+                          + os.environ["GITHUB_REPOSITORY"]
+                          + "/main/"
+                          + quote(relative_path, safe="/")
+                      )
+                  })
+
+          index.parent.mkdir(parents=True, exist_ok=True)
+          index.write_text(
+              json.dumps(files, indent=2),
+              encoding="utf-8"
+          )
+
+          print(f"Extracted {len(files)} files")
+          print(f"Created index: {index}")
+          PY
+
+      - name: Save Extracted Files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add assets/lifestyle-trends indexes/lifestyle-trends.json
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Extract lifestyle image archive"
+            git push
+          fi
