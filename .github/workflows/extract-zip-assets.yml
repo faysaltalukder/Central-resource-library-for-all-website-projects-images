@@ -5,6 +5,8 @@ on:
   push:
     paths:
       - "*.zip"
+      - "scripts/extract_zip_archives.py"
+      - ".github/workflows/extract-zip-assets.yml"
 
 permissions:
   contents: write
