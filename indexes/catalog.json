@@ -1,0 +1,55 @@
+{
+  "repository": "faysaltalukder/Central-resource-library-for-all-website-projects-images",
+  "branch": "main",
+  "archive_count": 3,
+  "archives": [
+    {
+      "archive": "Lifestyle Trends and Online Shopping in BD.zip",
+      "archive_path": "Lifestyle Trends and Online Shopping in BD.zip",
+      "archive_sha256": "0d80ca9e5997e6421833c4eb94ecd4c4ad46dd9f2747cf3fdbc82dd966276465",
+      "archive_size": 16661222,
+      "archive_url": "https://raw.githubusercontent.com/faysaltalukder/Central-resource-library-for-all-website-projects-images/main/Lifestyle%20Trends%20and%20Online%20Shopping%20in%20BD.zip",
+      "archive_id": "lifestyle-trends",
+      "output_directory": "assets/lifestyle-trends/Lifestyle Trends and Online Shopping in BD",
+      "index_path": "indexes/lifestyle-trends.json",
+      "total_files": 173,
+      "image_files": 136,
+      "vector_files": 37,
+      "other_files": 0,
+      "duplicate_copies": 73,
+      "extracted_size": 16735115
+    },
+    {
+      "archive": "SaRa Page.zip",
+      "archive_path": "SaRa Page.zip",
+      "archive_sha256": "31e14f1885b3886dbde3a61cd79a04d3d75120c385d4cec96ec57ef603521bfc",
+      "archive_size": 18300628,
+      "archive_url": "https://raw.githubusercontent.com/faysaltalukder/Central-resource-library-for-all-website-projects-images/main/SaRa%20Page.zip",
+      "archive_id": "sara-page-d588706d",
+      "output_directory": "assets/zip-archives/sara-page-d588706d",
+      "index_path": "indexes/zip-archives/sara-page-d588706d.json",
+      "total_files": 390,
+      "image_files": 332,
+      "vector_files": 58,
+      "other_files": 0,
+      "duplicate_copies": 140,
+      "extracted_size": 18386105
+    },
+    {
+      "archive": "Winter Wear.zip",
+      "archive_path": "Winter Wear.zip",
+      "archive_sha256": "a9426041efdfc4be7465f8a4433f8b97a783f8669886e88ec88fc3faf9bcbab0",
+      "archive_size": 9452650,
+      "archive_url": "https://raw.githubusercontent.com/faysaltalukder/Central-resource-library-for-all-website-projects-images/main/Winter%20Wear.zip",
+      "archive_id": "winter-wear-41a198b5",
+      "output_directory": "assets/zip-archives/winter-wear-41a198b5",
+      "index_path": "indexes/zip-archives/winter-wear-41a198b5.json",
+      "total_files": 341,
+      "image_files": 307,
+      "vector_files": 34,
+      "other_files": 0,
+      "duplicate_copies": 117,
+      "extracted_size": 9493412
+    }
+  ]
+}
