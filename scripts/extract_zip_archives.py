@@ -62,7 +62,7 @@ def paths_for_archive(archive: Path, archive_sha: str) -> tuple[Path, Path, str]
         )
 
     # A short hash suffix prevents collisions between similarly named ZIPs.
-    suffix = archive_sha[:8]
+    suffix = hashlib.sha256(archive.name.casefold().encode("utf-8")).hexdigest()[:8]
     return (
         ROOT / "assets/zip-archives" / f"{slug}-{suffix}",
         INDEX_DIR / "zip-archives" / f"{slug}-{suffix}.json",
